@@ -1,0 +1,270 @@
+// SCAFFOLDING
+// ===================================================================
+body {
+	background-color: @gray-base;
+	font-family: @font-family;
+	font-size: @font-size;
+}
+
+.ranking, 
+.ranking > header,
+.list-ranking,
+.ranking-logo,
+.ranking-title,
+.list-ranking-tooltip,
+.list-ranking {
+	&:before, 
+	&:after {
+		content: " ";
+	    display: table;
+	}
+}
+
+* {
+	&:before, 
+	&:after {
+	    -webkit-box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+}
+
+// GRID
+// ===================================================================
+
+
+
+
+// LISTAGEM DOS PERSONAGENS
+// ===================================================================
+.ranking {
+	margin: 191px auto 20px;
+	position: relative;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 372px;
+
+	@media(max-width: @screen-mobile) {
+		width: 100%;
+	}
+
+	header {
+		display: inline-block;
+		margin-bottom: -5px;
+		position: relative;
+		width: 100%;
+	}
+
+	&-logo {
+		bottom: 10px;
+		left: -32px;
+		position: absolute;
+		z-index: 2;
+
+		@media(max-width: @screen-mobile) {
+			left: 0;
+		}
+	}
+
+	&-title {
+		background-color: #fff;
+		border-radius: 3px;
+		color: @gray-base;
+		float: right;
+		font-size: @h1-font-size;
+		font-weight: bold;
+		letter-spacing: -2px;
+		line-height: 1;
+		padding: 12px 45px;
+		position: relative;
+		text-align: right;
+		text-transform: uppercase;
+		width: 60%;
+		z-index: 1;
+
+		@media(max-width: @screen-mobile) {
+			width: 95%;
+		}
+	}
+}
+
+.list-ranking {
+	float: left;
+	position: relative;
+	width: 100%;
+
+	&-media {
+		float: left;
+		height: 100%;
+		margin-right: 15px;
+		position: relative;
+		width: 70px;
+
+		&-img {
+			border-radius: 50%;
+			border: 4px solid @color-primary;
+			display: block;
+			height: 65px;
+			overflow: hidden;
+			position: relative;
+			text-align: center;
+			width: 65px;
+
+			> img {
+				position: absolute;
+				left: -15px;
+				max-height: 95px;
+				max-width: 95px;
+				top: 0;
+			}
+		}
+
+		&-label {
+			background-color: #fff;
+			border: 1px solid @gray-darker;
+			border-radius: 50%;
+			bottom: 0;
+			color: @gray-darker;
+			height: 20px;
+			line-height: 20px;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			width: 20px;
+		}
+	}
+
+	&-title {
+		color: @color-primary;
+		font-size: @h2-font-size;
+		margin-bottom: 3px;
+		margin-top: 12px;
+	}
+
+	&-description {
+		color: @gray-darker;
+		font-size: @h3-font-size;
+		margin-top: 0;
+	}
+
+	&-title,
+	&-description {
+		font-weight: normal;
+	}
+
+	&-item {
+		background-color: #fff;
+		display: block;
+		padding: 15px 15px 30px;
+		position: relative;
+		text-decoration: none;
+		transition: all .3s ease-out;
+		// width: 100%;
+
+		&:first-child {
+			border-radius: 3px 3px 0 0;
+		}
+		&:last-child {
+			border-radius: 0 0 3px 3px;
+		}
+
+		&:nth-child(even) {
+			background-color: @gray-light;
+		}
+
+		&:focus,
+		&:hover {
+			background-color: @color-primary;
+
+			.list-ranking-media-img {
+				border-color: @gray-light;
+			}
+
+			.list-ranking-title {
+				color: #fff;
+			}
+			.list-ranking-description {
+				color: @color-primary-darker;
+			}
+
+			.list-ranking-tooltip {
+				display: block;
+			}
+		}
+	}
+}
+
+// Tooltip
+.list-ranking-tooltip {
+	background-color: #f8f7f7;
+	border-radius: 6px;
+	display: none;
+	float: left;
+	margin-left: 10px;
+	position: absolute;
+	left: 100%;
+	top: 30%;
+	transition: all .3s ease-out;
+	width: 155px;
+
+	> .arrow {
+	    border-color: transparent;
+	    border-style: solid;
+	    border-width: 8px;
+
+		border-left-width: 0;
+		border-right-color: #fff;
+
+	    display: block;
+	    height: 0;
+		left: -8px;
+		margin-top: -8px;
+		top: 50%;
+	    position: absolute;
+	    width: 0;
+	}
+	
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		
+		li {
+			float: left;
+			text-align: center;
+			overflow: hidden;
+			width: 58%;
+
+			&:first-child {
+				width: calc(42% - 2px);
+				border-right: 1px solid rgba(0, 0, 0, 0.5);
+				border-right: 1px solid #000;
+				border-radius: 6px 0 0 0;
+			}
+
+			&:last-child {
+				border-left: 1px solid #fff;
+				border-radius: 0 6px 0 0;
+			}
+
+			span {
+				display: block;
+				text-align: center;
+
+				&.tooltipt-title {
+					background-color: @color-primary;
+					color: #fff;
+					font-size: 10px;
+					padding: 2px 0;
+					text-transform: uppercase;
+				}
+
+				&.tooltipt-content {
+					color: @gray-darker;
+					font-size: 24px;
+					padding: 3px 0;
+				}
+			}
+		}
+	}
+}
